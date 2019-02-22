@@ -3,7 +3,9 @@
 
 STMaytal32 is a new generation proof-of-concept design for water pressure telemetry for underresourced water utilities. It uses a standard automotive oil pressure sender to read pressure and send this to a server where it can inform better operation of a utility. It follows up on the original proof-of-concept designed called Maytal and the designs and iterations that followed from Indonesian innovators supported by a grant from the USAID IUWASH Plus project.
 
-This is just a proof-of-concept and should not be taken to be the right or best way to address the questions raised in the testing of earlier designs. It should be well noted that **as of right now, this code does not actually work**. The function to map the 5V signal from the pressure sender to the 3.3V ADC of the STM32 needs tweaking.
+This is just a proof-of-concept and should not be taken to be the right or best way to address the questions raised in the testing of earlier designs. 
+
+The function to map the 5V signal from the pressure sender to the 3.3V ADC of the STM32 may benefit from some tweaking.
 
 ## Design features
 STMaytal32 responds to some challenges to scale that were identified in testing some of the earlier water pressure telemetry designs:
