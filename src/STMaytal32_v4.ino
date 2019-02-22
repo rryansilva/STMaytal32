@@ -236,16 +236,19 @@ void wait(unsigned long ms) { //  Non-blocking delay function
 uint16_t readPressure() {    //  This is the original Maytal code for a 5V input
   digitalWrite(Q1, HIGH);     //  Switch on transducer
   wait(3000);                 //  Let transducer settle
+
+  uint16_t lowerBound = 343;
+  uint16_t upperBound = 4096 - lowerBound;
   
   float pressure = 0.00;
   uint16_t adcReading = analogRead(pressurePin);
   uint16_t rawVoltage = map(adcReading, 0, 4095, 0, 5000);
 
   //  Validate that analogRead is between 0.5v-4.5v range of transducer
-  if(rawVoltage < 500 || rawVoltage > 4500) {
-    pressure = 0;
+  if(adcReading < lowerBound || adcReading > upperBound) {
+    pressure = 0.00;
   } else {
-    pressure = (map(rawVoltage, 500, 4500, 0, 174));  //  Convert to PSI
+    pressure = ((adcReading - 343) * .065);
   }
 
   digitalWrite(Q1, LOW);      //  Switch off transducer to save power
