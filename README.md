@@ -5,8 +5,6 @@ STMaytal32 is a new generation proof-of-concept design for water pressure teleme
 
 This is just a proof-of-concept and should not be taken to be the right or best way to address the questions raised in the testing of earlier designs. 
 
-The function to map the 5V signal from the pressure sender to the 3.3V ADC of the STM32 may benefit from some tweaking.
-
 ## Design features
 STMaytal32 responds to some challenges to scale that were identified in testing some of the earlier water pressure telemetry designs:
 
@@ -19,14 +17,14 @@ STMaytal32 responds to some challenges to scale that were identified in testing 
 ### Core module
 ![](STMaytal32_annotated.jpg)
 
-1. *Voltage regulator*. The regulator on the Blue Pill supplies 3.3V of dubious reliability. This supplies 5V direct from the AA batteries.
-2. *Power MOSFET*. Cuts power to the pressure sender while not in use.
+1. *1x03 connector*. To enable the pressure sender to be easily attached and detached.
+2. *Serial1 breakout.* Pins to the STM32's Serial1 port are broken out here to facilitate debugging.
 3. *Smoothing capacitors*. To reduce variations in supply from the AA batteries.
-4. *1x03 connector*. To enable the pressure sender to be easily attached and detached.
-5. *Voltage divider*. To convert the 5V signal from the pressure sender to a 3.3V equivalent signal.
-6. *1x10 JTAG-style connector*. To connect to a GX16-10 aviation connector on the enclosure, which connects this with the communications module.
+4. *Voltage divider*. To convert the 5V signal from the pressure sender to a 3.3V equivalent signal.
+5. *Voltage regulator*. The regulator on the Blue Pill supplies 3.3V of dubious reliability. This supplies 5V direct from the AA batteries.
+6. *Power MOSFET*. Cuts power to the pressure sender while not in use.
 7. *"Blue Pill" STM32 development board*. Note that the PWR LED has been desoldered to save power.
-8. *Serial1 breakout.* Pins to the STM32's Serial1 port are broken out here to facilitate debugging.
+8. *1x10 JTAG-style connector*. To connect to a GX16-10 aviation connector on the enclosure, which connects this with the communications module.
 
 ### Communications module
 ![](communications.jpg)
